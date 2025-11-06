@@ -1,7 +1,8 @@
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
-import Radio from "@/components/Radio";
+import Logo from "@/components/Logo";
 import Progress from "@/components/Progress";
+import Radio from "@/components/Radio";
 import { useFormContext } from "@/context";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -70,6 +71,9 @@ export default function Selection() {
                 variant="primary"
               />
             </div>
+          </div>
+          <div>
+            <Logo />
           </div>
         </div>
       </form>

@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import Input from "@/components/Input";
+import Logo from "@/components/Logo";
 import Progress from "@/components/Progress";
 import { useFormContext } from "@/context";
 import { useRouter } from "next/router";
@@ -85,6 +86,9 @@ export default function UserInfo() {
                 variant="primary"
               />
             </div>
+          </div>
+          <div>
+            <Logo />
           </div>
         </div>
       </form>
