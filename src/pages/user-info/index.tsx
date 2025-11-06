@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import Input from "@/components/Input";
+import Progress from "@/components/Progress";
 import { useFormContext } from "@/context";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -11,7 +12,8 @@ import {
 } from "./utils";
 
 export default function UserInfo() {
-  const { name, email, number, setInputValue } = useFormContext();
+  const { name, email, number, progress, setInputValue, setProgress } =
+    useFormContext();
 
   const router = useRouter();
 
@@ -25,8 +27,12 @@ export default function UserInfo() {
 
     if (isNameValid && isNumberValid && isEmailValid) {
       setIsContinueButtonDisabled(false);
+
+      if (setProgress) {
+        setProgress(50);
+      }
     }
-  }, [email, name, number]);
+  }, [email, name, number, setProgress]);
 
   async function handleContinue() {
     await router.push("/selection");
@@ -34,6 +40,9 @@ export default function UserInfo() {
 
   return (
     <div>
+      <div>
+        <Progress progress={progress} />
+      </div>
       <form>
         <div>
           <Heading content="Please confirm or add to the below GP Contact Details." />

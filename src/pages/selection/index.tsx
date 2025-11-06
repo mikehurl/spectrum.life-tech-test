@@ -1,12 +1,13 @@
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import Radio from "@/components/Radio";
+import Progress from "@/components/Progress";
 import { useFormContext } from "@/context";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Selection() {
-  const { format, setFormat } = useFormContext();
+  const { format, progress, setFormat, setProgress } = useFormContext();
 
   const router = useRouter();
 
@@ -16,8 +17,12 @@ export default function Selection() {
   useEffect(() => {
     if (format !== null) {
       setIsContinueButtonDisabled(false);
+
+      if (setProgress) {
+        setProgress(100);
+      }
     }
-  }, [format]);
+  }, [format, setProgress]);
 
   async function handleContinue() {
     await router.push("/booking-confirmation");
@@ -29,6 +34,9 @@ export default function Selection() {
 
   return (
     <div>
+      <div>
+        <Progress progress={progress} />
+      </div>
       <form>
         <div>
           <Heading content="Select your preferred appointment format" />
