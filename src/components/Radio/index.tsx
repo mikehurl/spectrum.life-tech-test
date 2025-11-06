@@ -1,5 +1,6 @@
 import { type Format } from "@/context";
 import { type InputHTMLAttributes } from "react";
+import styles from "./index.module.css";
 
 type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   handleChange?: (value: Format) => void;
@@ -15,11 +16,12 @@ export default function Radio({
   const id = `${label?.toLocaleLowerCase()}-radio`;
 
   return (
-    <div>
-      <label htmlFor={id}>
+    <div className={styles.radio}>
+      <label className={styles.label} htmlFor={id}>
         {label}
         <input
           checked={selectedFormat === label}
+          className={styles.input}
           id={id}
           onChange={() => {
             if (handleChange) {

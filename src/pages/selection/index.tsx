@@ -4,6 +4,7 @@ import Logo from "@/components/Logo";
 import Progress from "@/components/Progress";
 import Radio from "@/components/Radio";
 import { useFormContext } from "@/context";
+import styles from "@/styles/booking.module.css";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -23,7 +24,7 @@ export default function Selection() {
         setProgress(100);
       }
     }
-  }, [format, setProgress]);
+  }, [format]);
 
   async function handleContinue() {
     await router.push("/booking-confirmation");
@@ -34,12 +35,12 @@ export default function Selection() {
   }
 
   return (
-    <div>
-      <div>
+    <div className={styles.page}>
+      <div className={styles.progress}>
         <Progress progress={progress} />
       </div>
-      <form>
-        <div>
+      <form className={styles.form}>
+        <div className={styles.questions}>
           <Heading content="Select your preferred appointment format" />
           <Radio
             handleChange={setFormat}
@@ -52,8 +53,8 @@ export default function Selection() {
             selectedFormat={format === "Audio" ? format : null}
           />
         </div>
-        <div>
-          <div>
+        <div className={styles.footer}>
+          <div className={styles.actions}>
             <div>
               <Button
                 content="Previous"
@@ -72,7 +73,8 @@ export default function Selection() {
               />
             </div>
           </div>
-          <div>
+
+          <div className={styles.logo}>
             <Logo />
           </div>
         </div>

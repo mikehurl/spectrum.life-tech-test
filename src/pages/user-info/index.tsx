@@ -4,6 +4,7 @@ import Input from "@/components/Input";
 import Logo from "@/components/Logo";
 import Progress from "@/components/Progress";
 import { useFormContext } from "@/context";
+import styles from "@/styles/booking.module.css";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import {
@@ -22,11 +23,11 @@ export default function UserInfo() {
     useState(true);
 
   useEffect(() => {
+    const isEmailValid = getEmailFieldError(email) == null;
     const isNameValid = getTextFieldError(name) == null;
     const isNumberValid = getNumericFieldError(number) == null;
-    const isEmailValid = getEmailFieldError(email) == null;
 
-    if (isNameValid && isNumberValid && isEmailValid) {
+    if (isEmailValid && isNameValid && isNumberValid) {
       setIsContinueButtonDisabled(false);
 
       if (setProgress) {
@@ -40,12 +41,12 @@ export default function UserInfo() {
   }
 
   return (
-    <div>
-      <div>
+    <div className={styles.page}>
+      <div className={styles.progress}>
         <Progress progress={progress} />
       </div>
-      <form>
-        <div>
+      <form className={styles.form}>
+        <div className={styles.questions}>
           <Heading content="Please confirm or add to the below GP Contact Details." />
           <Input
             handleChange={setInputValue}
@@ -72,8 +73,8 @@ export default function UserInfo() {
             value={number}
           />
         </div>
-        <div>
-          <div>
+        <div className={styles.footer}>
+          <div className={styles.actions}>
             <div>
               <Button content="Previous" type="button" variant="secondary" />
             </div>
@@ -87,7 +88,7 @@ export default function UserInfo() {
               />
             </div>
           </div>
-          <div>
+          <div className={styles.logo}>
             <Logo />
           </div>
         </div>

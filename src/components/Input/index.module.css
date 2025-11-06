@@ -1,0 +1,37 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.labelled-input {
+  background-color: var(--background);
+  border-radius: 12px;
+  border: 1px solid var(--secondary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--small);
+  width: 100%;
+  padding: var(--medium);
+}
+
+.input {
+  border: none;
+  flex-grow: 1;
+  font-size: 16px;
+  line-height: 22px;
+  outline: none;
+  width: 100%;
+}
+
+.label {
+  color: var(--tertiary);
+  font-size: 14px;
+  font-weight: var(--bold);
+  line-height: 18px;
+}
+
+.error {
+  color: var(--error);
+}

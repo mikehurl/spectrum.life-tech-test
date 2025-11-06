@@ -1,0 +1,9 @@
+.logo {
+  align-items: center;
+  color: var(--tertiary);
+  display: flex;
+  font-size: 14px;
+  gap: 4px;
+  justify-content: center;
+  line-height: 140%;
+}

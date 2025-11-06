@@ -1,4 +1,5 @@
 import { useState, type InputHTMLAttributes } from "react";
+import styles from "./index.module.css";
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   handleChange?: (value: string, fieldName: string) => void;
@@ -24,11 +25,14 @@ export default function Input({
   const id = `${name}-input`;
 
   return (
-    <div>
-      <div key={name}>
-        <label htmlFor={id}>{label}</label>
+    <div className={styles["input-field"]}>
+      <div className={styles["labelled-input"]} key={name}>
+        <label className={styles.label} htmlFor={id}>
+          {label}
+        </label>
         <input
           autoComplete="off"
+          className={styles.input}
           id={id}
           onChange={(event) => {
             if (handleChange) {
@@ -43,7 +47,7 @@ export default function Input({
         />
       </div>
       {shouldDisplayErrorMessage ? (
-        <span role="alert" id={`${name}-error`}>
+        <span className={styles.error} role="alert" id={`${name}-error`}>
           {errorMessage}
         </span>
       ) : null}

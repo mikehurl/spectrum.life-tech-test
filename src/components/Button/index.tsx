@@ -1,4 +1,6 @@
+import classNames from "classnames";
 import { type ButtonHTMLAttributes } from "react";
+import styles from "./index.module.css";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   content: string;
@@ -6,6 +8,19 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: "primary" | "secondary";
 };
 
-export default function Button({ content, variant, ...rest }: ButtonProps) {
-  return <button {...rest}>{content}</button>;
+export default function Button({
+  content,
+  isDisabled,
+  variant,
+  ...rest
+}: ButtonProps) {
+  return (
+    <button
+      className={classNames(styles.button, styles[variant])}
+      disabled={isDisabled}
+      {...rest}
+    >
+      {content}
+    </button>
+  );
 }

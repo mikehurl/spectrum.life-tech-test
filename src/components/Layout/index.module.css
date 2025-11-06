@@ -1,0 +1,6 @@
+.layout {
+  font-family: var(--font-dm-sans);
+  margin: 0 auto;
+  max-width: 80ch;
+  min-height: 100vh;
+}

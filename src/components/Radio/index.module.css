@@ -1,0 +1,27 @@
+.input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.radio {
+  align-items: center;
+  border: 2px solid var(--secondary);
+  border-radius: var(--medium);
+  display: flex;
+  width: 100%;
+}
+
+.radio:has(.input:checked) {
+  border-color: var(--blurple);
+}
+
+.label {
+  cursor: pointer;
+  font-weight: var(--bold);
+  font-size: 16px;
+  height: 100%;
+  line-height: 22px;
+  padding: var(--xlarge);
+  width: 100%;
+}
