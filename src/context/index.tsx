@@ -1,14 +1,19 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 
+export type Format = "Audio" | "Video" | null;
+
 type FormContextType = {
   email: string;
+  format: Format;
   name: string;
   number: string;
+  setFormat?: (value: Format) => void;
   setInputValue?: (value: string, fieldName: string) => void;
 };
 
 const defaultState = {
   email: "",
+  format: null,
   name: "",
   number: "",
 };
@@ -21,6 +26,7 @@ type FormContextProviderProps = {
 
 export const FormContextProvider = ({ children }: FormContextProviderProps) => {
   const [email, setEmail] = useState(defaultState.email);
+  const [format, setFormat] = useState<Format>(defaultState.format);
   const [name, setName] = useState(defaultState.name);
   const [number, setNumber] = useState(defaultState.number);
 
@@ -44,8 +50,10 @@ export const FormContextProvider = ({ children }: FormContextProviderProps) => {
     <FormContext.Provider
       value={{
         email,
+        format,
         name,
         number,
+        setFormat,
         setInputValue,
       }}
     >
